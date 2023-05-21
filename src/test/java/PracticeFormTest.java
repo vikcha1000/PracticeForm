@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.*;
+import pages.RegistrationPage;
 
 import java.io.File;
 
@@ -26,6 +27,7 @@ public class PracticeFormTest {
         //идеи доработки: вынести все в одтельную переменную, может список, + добавить все переменные студента
         //идеи доработок 2: когда вынесу переменные в объкт, вынести его в отдельный файл
         //идея 3: возможность создавать и проверять одним кейсом 2 объекта или вооьще любое количество
+        //совершенный вариант: создавать массив тестовых данных и выбирать рандомно из ниъ
         String firstName = "Ivan";
         String lastName = "Ivanov";
         String userEmail = "email@email.ru";
@@ -38,8 +40,9 @@ public class PracticeFormTest {
         String currentAddress = "My current Address";
 
         //заполняем форму
-        open("/automation-practice-form");
-        $(".main-header").shouldHave(text("Practice Form"));
+
+        new RegistrationPage().openPage();
+
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
